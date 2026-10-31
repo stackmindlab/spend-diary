@@ -1,12 +1,12 @@
 /*
   i18n.js — English and Spanish text.
-
+ 
   "i18n" is short for "internationalization" (i + 18 letters + n).
   Every piece of text on the screen has a key, like "spent". The t() function
   looks the key up in the current language. Adding a new language later would
   just mean adding one more object here.
 */
-
+ 
 const STRINGS = {
   en: {
     appName: "Spend Diary",
@@ -16,6 +16,7 @@ const STRINGS = {
     added: "Added",
     spent: "Spent",
     stillHave: "You still have {pct}% of your money.",
+    allUsed: "You've used all your money this month.",
     overBy: "You're {amt} over. Time to slow down 💗",
     iSpent: "− I spent",
     iGot: "+ I got money",
@@ -37,6 +38,7 @@ const STRINGS = {
     whereWent: "Where it went",
     whereCame: "Where it came from",
     myMonth: "Your money this month",
+    startPoint: "Start",
     history: "History",
     pastMonths: "Past months",
     nothingSpent:
@@ -124,7 +126,7 @@ const STRINGS = {
     sage: "Sage",
     midnight: "Midnight",
   },
-
+ 
   es: {
     appName: "Spend Diary",
     moneyLeft: "Te queda",
@@ -133,6 +135,7 @@ const STRINGS = {
     added: "Entró",
     spent: "Gastaste",
     stillHave: "Todavía tienes el {pct}% de tu dinero.",
+    allUsed: "Ya usaste todo tu dinero este mes.",
     overBy: "Te pasaste por {amt}. Hay que bajarle 💗",
     iSpent: "− Gasté",
     iGot: "+ Entró dinero",
@@ -237,7 +240,7 @@ const STRINGS = {
     midnight: "Medianoche",
   },
 };
-
+ 
 // Names for the starter categories. Custom categories keep whatever the person typed.
 const DEFAULT_CAT_NAMES = {
   en: {
@@ -275,22 +278,22 @@ const DEFAULT_CAT_NAMES = {
     otherin: "Otro ingreso",
   },
 };
-
+ 
 let currentLang = "en";
-
+ 
 // t("overBy", { amt: "$5.00" }) → "You're $5.00 over..."
 function t(key, vars = {}) {
   const text = STRINGS[currentLang][key] ?? STRINGS.en[key] ?? key;
   return text.replace(/\{(\w+)\}/g, (match, name) => vars[name] ?? match);
 }
-
+ 
 // Pick a starting language from the phone/browser setting.
 function detectLanguage() {
   return (navigator.language || "en").toLowerCase().startsWith("es")
     ? "es"
     : "en";
 }
-
+ 
 // Fill in every element that has data-i18n="key" in the HTML.
 function applyLanguage(lang) {
   currentLang = STRINGS[lang] ? lang : "en";
@@ -302,3 +305,4 @@ function applyLanguage(lang) {
     el.placeholder = t(el.dataset.i18nPh);
   });
 }
+ 
