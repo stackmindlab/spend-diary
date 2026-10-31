@@ -1,6 +1,6 @@
 /*
   charts.js — the three charts, drawn by hand.
-
+ 
   No chart library: each function just builds a string of SVG/HTML.
   SVG ("scalable vector graphics") is a way to draw shapes with tags,
   like <circle> and <polyline>, that stay sharp at any size.
@@ -17,16 +17,20 @@ function donutChart(slices, centerBig, centerSmall) {
   const total = slices.reduce((sum, s) => sum + s.value, 0);
   let used = 0;
 
-  const rings = slices.map(s => {
-    const pct = (s.value / total) * 100;
-    // 25 moves the start to 12 o'clock (circles normally start at 3 o'clock).
-    const ring = `<circle class="donut-slice" cx="21" cy="21" r="15.915" fill="none"
+  const rings = slices
+    .map((s, i) => {
+      const pct = (s.value / total) * 100;
+      const dash = `${pct.toFixed(2)} ${(100 - pct).toFixed(2)}`;
+      // 25 moves the start to 12 o'clock (circles normally start at 3 o'clock).
+      // --dash + the delay let CSS "sweep" each slice in, one after another (see .donut-slice in styles.css).
+      const ring = `<circle class="donut-slice" cx="21" cy="21" r="15.915" fill="none"
       stroke="${s.color}" stroke-width="6"
-      stroke-dasharray="${pct.toFixed(2)} ${(100 - pct).toFixed(2)}"
+      stroke-dasharray="${dash}" style="--dash: ${dash}; animation-delay: ${i * 0.12}s"
       stroke-dashoffset="${(25 - used).toFixed(2)}"></circle>`;
-    used += pct;
-    return ring;
-  }).join("");
+      used += pct;
+      return ring;
+    })
+    .join("");
 
   return `
     <div class="donut">
@@ -42,17 +46,22 @@ function donutChart(slices, centerBig, centerSmall) {
   BAR LIST
   Each row is a label, an amount, and a bar whose width is a % of the biggest row.
   The width starts at 0 and the CSS transition animates it out (see animateBars in app.js).
+  If a row has an id, it can be tapped (app.js listens for clicks on [data-id]).
 */
 function barList(rows, total) {
-  const biggest = Math.max(...rows.map(r => r.value));
-  return rows.map(r => `
-           <div class="bar-row" ${r.id ? `data-id="${escapeHTML(r.id)}" role="button" tabindex="0"` : ""}>
+  const biggest = Math.max(...rows.map((r) => r.value));
+  return rows
+    .map(
+      (r) => `
+    <div class="bar-row" ${r.id ? `data-id="${escapeHTML(r.id)}" role="button" tabindex="0"` : ""}>
       <div class="bar-top">
         <span>${r.emoji} ${escapeHTML(r.label)}</span>
         <span><b>${formatMoney(r.value)}</b><small>${Math.round((r.value / total) * 100)}%</small></span>
       </div>
       <div class="bar"><i data-width="${((r.value / biggest) * 100).toFixed(1)}" style="background:${r.color}"></i></div>
-    </div>`).join("");
+    </div>`,
+    )
+    .join("");
 }
 
 /*
@@ -62,16 +71,23 @@ function barList(rows, total) {
   In SVG, y = 0 is the TOP, so bigger money = smaller y.
 */
 function lineChart(points) {
-  const W = 320, H = 140, PAD = 8;
-  const values = points.map(p => p.value);
-  const min = Math.min(...values, 0);   // include 0 so the chart shows how close you are to empty
+  const W = 320,
+    H = 140,
+    PAD = 8;
+  const values = points.map((p) => p.value);
+  const min = Math.min(...values, 0); // include 0 so the chart shows how close you are to empty
   let max = Math.max(...values);
-  if (max === min) max = min + 1;     // avoid dividing by zero when everything is the same
+  if (max === min) max = min + 1; // avoid dividing by zero when everything is the same
 
-  const x = i => points.length === 1 ? W / 2 : PAD + (i / (points.length - 1)) * (W - PAD * 2);
-  const y = v => PAD + (1 - (v - min) / (max - min)) * (H - PAD * 2);
+  const x = (i) =>
+    points.length === 1
+      ? W / 2
+      : PAD + (i / (points.length - 1)) * (W - PAD * 2);
+  const y = (v) => PAD + (1 - (v - min) / (max - min)) * (H - PAD * 2);
 
-  const coords = points.map((p, i) => `${x(i).toFixed(1)},${y(p.value).toFixed(1)}`);
+  const coords = points.map(
+    (p, i) => `${x(i).toFixed(1)},${y(p.value).toFixed(1)}`,
+  );
   const line = coords.join(" ");
   // The shaded area: the line, then down to the bottom corners.
   const area = `M${coords[0]} L${coords.join(" L")} L${x(points.length - 1).toFixed(1)},${H} L${x(0).toFixed(1)},${H} Z`;
