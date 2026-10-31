@@ -143,12 +143,14 @@ function render() {
   const pctLeft =
     pool > 0 ? Math.max(0, Math.min(100, (sum.left / pool) * 100)) : 0;
   $("meterFill").style.width = pctLeft.toFixed(1) + "%";
-  $("meterNote").textContent =
+    $("meterNote").textContent =
     pool <= 0
       ? ""
       : sum.left < 0
         ? t("overBy", { amt: formatMoney(-sum.left) })
-        : t("stillHave", { pct: Math.round(pctLeft) });
+        : sum.left === 0
+          ? t("allUsed")
+          : t("stillHave", { pct: Math.round(pctLeft) });
 
   renderChips();
   renderSpendChart(sum);
