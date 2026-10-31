@@ -1,0 +1,248 @@
+/*
+  i18n.js — English and Spanish text.
+
+  "i18n" is short for "internationalization" (i + 18 letters + n).
+  Every piece of text on the screen has a key, like "spent". The t() function
+  looks the key up in the current language. Adding a new language later would
+  just mean adding one more object here.
+*/
+
+const STRINGS = {
+  en: {
+    appName: "Spend Diary",
+    moneyLeft: "Money left",
+    startedWith: "Started with",
+    edit: "Edit",
+    added: "Added",
+    spent: "Spent",
+    stillHave: "You still have {pct}% of your money.",
+    overBy: "You're {amt} over. Time to slow down 💗",
+    iSpent: "− I spent",
+    iGot: "+ I got money",
+    whatFor: "What was it for?",
+    whereFrom: "Where did it come from?",
+    manage: "Edit",
+    newCat: "+ New",
+           wherePh: "Where? · Sonic, Whole Foods…",
+       notePh: "Note (optional) · birthday dinner…",
+       topPlaces: "Top places this month",
+       noPlace: "No place",
+       tapHint: "Tap a category to see where it went",
+    subtract: "Subtract it",
+    addIt: "Add it",
+    errAmount: "Type an amount first.",
+    errCat: "Pick a category.",
+    loggedSpend: "−{amt} logged ✓",
+    loggedAdd: "+{amt} added ✓",
+    whereWent: "Where it went",
+    whereCame: "Where it came from",
+    myMonth: "Your money this month",
+    history: "History",
+    pastMonths: "Past months",
+    nothingSpent: "Nothing spent yet. Each time you spend, log it and it'll show up here.",
+    nothingAdded: "No money added yet this month.",
+    noEntries: "No entries yet. Your first one goes up top ↑",
+    lineEmpty: "Your balance line shows up once you log something.",
+    mostWent: "Most of your money went to {cat}: {amt}",
+    ofSpending: "of spending",
+    showMore: "Show more",
+    deleted: "Deleted {cat}",
+    undo: "Undo",
+    spentMost: "Spent {amt} · most on {cat}",
+    left: "left",
+    privacy: "🔒 Private: your numbers are saved only on this device. Nothing is sent anywhere.",
+    // menu
+    menu: "Menu",
+    menuNote: "Your data only lives on this device, so back it up now and then.",
+    newMonth: "Start a new month",
+    newMonthSub: "Saves this month to \"Past months\" and starts fresh with {amt}",
+    categories: "My categories",
+    categoriesSub: "Add, rename or delete",
+    theme: "Theme",
+    language: "Language",
+    move: "Move to another device",
+    moveSub: "Back up here, restore there",
+    eraseAll: "Erase everything",
+    eraseSub: "Can't be undone",
+    // sheets
+    cancel: "Cancel",
+    save: "Save",
+    startTitle: "Starting amount",
+    startQ: "How much did you have at the start?",
+    newMonthQ: "Start a new month?",
+    newMonthBody: "This month gets saved to \"Past months\". You'll start fresh with what's left: {amt}.",
+    startFresh: "Start fresh",
+    freshToast: "Fresh start ✿",
+    eraseQ: "Erase everything?",
+    eraseBody: "This deletes all entries, categories and past months on this device. Back up first if you might want them.",
+    erase: "Erase",
+    erased: "All cleared",
+    moveTitle: "Move to another device",
+    moveBody: "1. Tap Back up to download a small file.\n2. Send it to your other device (email, AirDrop, Drive).\n3. Open Spend Diary there → Menu → Move to another device → Restore.",
+    backup: "Back up",
+    restore: "Restore",
+    backupDone: "Backup downloaded ✓",
+    restoreQ: "Restore this backup?",
+    restoreBody: "It has {n} entries. It will replace what's on this device now.",
+    restored: "Backup restored ✓",
+    badFile: "That doesn't look like a Spend Diary backup.",
+    saveFail: "Couldn't save. Is private browsing on?",
+    startUpdated: "Starting amount updated ✓",
+    // categories
+    spendingCats: "Spending",
+    incomeCats: "Money coming in",
+    addCat: "+ Add a category",
+    catName: "Name",
+    catNamePh: "e.g. Starbucks, Dog food",
+    pickEmoji: "Pick an emoji",
+    pickColor: "Pick a color",
+    newCatTitle: "New category",
+    editCatTitle: "Edit category",
+    delete: "Delete",
+    catSaved: "Category saved ✓",
+    catDeleted: "Category deleted",
+    errName: "Give it a name.",
+    errDup: "You already have one with that name.",
+    moveQ: "\"{cat}\" has {n} entries ({amt}). Move them to:",
+    lastCat: "Keep at least one category here.",
+    // welcome
+    welcome: "Welcome to Spend Diary ✿",
+    welcomeBody: "See where your money goes. Everything stays private on this device.",
+    welcomeQ: "How much money are you starting with?",
+    letsGo: "Let's go",
+    // themes
+    blush: "Blush", sage: "Sage", midnight: "Midnight"
+  },
+
+  es: {
+    appName: "Spend Diary",
+    moneyLeft: "Te queda",
+    startedWith: "Empezaste",
+    edit: "Editar",
+    added: "Entró",
+    spent: "Gastaste",
+    stillHave: "Todavía tienes el {pct}% de tu dinero.",
+    overBy: "Te pasaste por {amt}. Hay que bajarle 💗",
+    iSpent: "− Gasté",
+    iGot: "+ Entró dinero",
+    whatFor: "¿En qué fue?",
+    whereFrom: "¿De dónde vino?",
+    manage: "Editar",
+    newCat: "+ Nueva",
+           wherePh: "¿Dónde? · Sonic, Whole Foods…",
+       notePh: "Nota (opcional) · cena de cumpleaños…",
+       topPlaces: "Donde más gastaste este mes",
+       noPlace: "Sin lugar",
+       tapHint: "Toca una categoría para ver dónde",
+    subtract: "Restarlo",
+    addIt: "Sumarlo",
+    errAmount: "Escribe una cantidad primero.",
+    errCat: "Elige una categoría.",
+    loggedSpend: "−{amt} anotado ✓",
+    loggedAdd: "+{amt} sumado ✓",
+    whereWent: "¿A dónde se fue?",
+    whereCame: "¿De dónde vino?",
+    myMonth: "Tu dinero este mes",
+    history: "Historial",
+    pastMonths: "Meses anteriores",
+    nothingSpent: "Todavía no has gastado nada. Cada vez que gastes, anótalo y aparecerá aquí.",
+    nothingAdded: "Todavía no ha entrado dinero este mes.",
+    noEntries: "Nada anotado todavía. Lo primero va arriba ↑",
+    lineEmpty: "La línea de tu saldo aparece cuando anotes algo.",
+    mostWent: "La mayor parte de tu dinero se fue en {cat}: {amt}",
+    ofSpending: "del gasto",
+    showMore: "Ver más",
+    deleted: "Borraste {cat}",
+    undo: "Deshacer",
+    spentMost: "Gastaste {amt} · más en {cat}",
+    left: "quedó",
+    privacy: "🔒 Privado: tus números se guardan solo en este dispositivo. No se envía nada.",
+    menu: "Menú",
+    menuNote: "Tus datos solo viven en este dispositivo. Haz un respaldo de vez en cuando.",
+    newMonth: "Empezar un mes nuevo",
+    newMonthSub: "Guarda este mes en \"Meses anteriores\" y empiezas con {amt}",
+    categories: "Mis categorías",
+    categoriesSub: "Agregar, cambiar nombre o borrar",
+    theme: "Tema",
+    language: "Idioma",
+    move: "Pasar a otro dispositivo",
+    moveSub: "Respalda aquí, restaura allá",
+    eraseAll: "Borrar todo",
+    eraseSub: "No se puede deshacer",
+    cancel: "Cancelar",
+    save: "Guardar",
+    startTitle: "Cantidad inicial",
+    startQ: "¿Con cuánto empezaste?",
+    newMonthQ: "¿Empezar un mes nuevo?",
+    newMonthBody: "Este mes se guarda en \"Meses anteriores\". Empiezas con lo que te quedó: {amt}.",
+    startFresh: "Empezar",
+    freshToast: "Mes nuevo ✿",
+    eraseQ: "¿Borrar todo?",
+    eraseBody: "Esto borra todo lo anotado, tus categorías y meses anteriores en este dispositivo. Haz un respaldo primero si los quieres.",
+    erase: "Borrar",
+    erased: "Todo borrado",
+    moveTitle: "Pasar a otro dispositivo",
+    moveBody: "1. Toca Respaldar para descargar un archivo pequeño.\n2. Mándalo a tu otro dispositivo (correo, AirDrop, Drive).\n3. Abre Spend Diary allá → Menú → Pasar a otro dispositivo → Restaurar.",
+    backup: "Respaldar",
+    restore: "Restaurar",
+    backupDone: "Respaldo descargado ✓",
+    restoreQ: "¿Restaurar este respaldo?",
+    restoreBody: "Tiene {n} movimientos. Va a reemplazar lo que tienes ahora en este dispositivo.",
+    restored: "Respaldo restaurado ✓",
+    badFile: "Ese archivo no parece un respaldo de Spend Diary.",
+    saveFail: "No se pudo guardar. ¿Estás en modo privado?",
+    startUpdated: "Cantidad inicial actualizada ✓",
+    spendingCats: "Gastos",
+    incomeCats: "Dinero que entra",
+    addCat: "+ Agregar categoría",
+    catName: "Nombre",
+    catNamePh: "ej. Starbucks, Comida del perro",
+    pickEmoji: "Elige un emoji",
+    pickColor: "Elige un color",
+    newCatTitle: "Nueva categoría",
+    editCatTitle: "Editar categoría",
+    delete: "Borrar",
+    catSaved: "Categoría guardada ✓",
+    catDeleted: "Categoría borrada",
+    errName: "Ponle un nombre.",
+    errDup: "Ya tienes una con ese nombre.",
+    moveQ: "\"{cat}\" tiene {n} movimientos ({amt}). ¿A dónde los pasamos?",
+    lastCat: "Deja por lo menos una categoría aquí.",
+    welcome: "Te damos la bienvenida a Spend Diary ✿",
+    welcomeBody: "Mira a dónde se va tu dinero. Todo se queda privado en este dispositivo.",
+    welcomeQ: "¿Con cuánto dinero empiezas?",
+    letsGo: "¡Vamos!",
+    blush: "Rosa", sage: "Salvia", midnight: "Medianoche"
+  }
+};
+
+// Names for the starter categories. Custom categories keep whatever the person typed.
+const DEFAULT_CAT_NAMES = {
+  en: { food:"Food & groceries", eatout:"Eating out", gas:"Gas", bills:"Bills", rent:"Rent", kids:"Kids",
+        shopping:"Shopping", fun:"Fun", subs:"Subscriptions", other:"Other",
+        pay:"Paycheck", side:"Side gig", gift:"Gift", refund:"Refund", otherin:"Other income" },
+  es: { food:"Comida y súper", eatout:"Comer fuera", gas:"Gasolina", bills:"Facturas", rent:"Renta", kids:"Niños",
+        shopping:"Compras", fun:"Diversión", subs:"Suscripciones", other:"Otro",
+        pay:"Cheque", side:"Trabajo extra", gift:"Regalo", refund:"Reembolso", otherin:"Otro ingreso" }
+};
+
+let currentLang = "en";
+
+// t("overBy", { amt: "$5.00" }) → "You're $5.00 over..."
+function t(key, vars = {}) {
+  const text = STRINGS[currentLang][key] ?? STRINGS.en[key] ?? key;
+  return text.replace(/\{(\w+)\}/g, (match, name) => vars[name] ?? match);
+}
+
+// Pick a starting language from the phone/browser setting.
+function detectLanguage() {
+  return (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";
+}
+
+// Fill in every element that has data-i18n="key" in the HTML.
+function applyLanguage(lang) {
+  currentLang = STRINGS[lang] ? lang : "en";
+  document.documentElement.lang = currentLang;
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+}

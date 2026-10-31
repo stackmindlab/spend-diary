@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="blush">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Spend Diary</title>
+  <meta name="description" content="A simple, private money tracker. Everything stays on your device.">
+  <meta name="theme-color" content="#f6e7f0">
+  <meta name="referrer" content="no-referrer">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/icon-192.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Spend Diary">
+  <link rel="stylesheet" href="css/themes.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <!-- Soft blurry color shapes behind everything (colors come from the theme) -->
+  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <p class="app-name">✿ Spend Diary</p>
+        <p class="month" id="monthLabel"></p>
+      </div>
+      <button class="icon-btn" id="menuBtn" aria-label="Menu">⋯</button>
+    </header>
+
+    <div class="layout">
+      <!-- LEFT column on big screens: balance + entry form -->
+      <div class="col">
+        <section class="card hero">
+          <p class="eyebrow" data-i18n="moneyLeft"></p>
+          <p class="balance" id="balance">$0.00</p>
+          <div class="pills">
+            <button class="pill start" id="editStart">
+              <span data-i18n="startedWith"></span><em class="edit-tag" data-i18n="edit"></em>
+              <b id="startAmount">$0</b>
+            </button>
+            <div class="pill in"><span data-i18n="added"></span><b id="addedAmount">$0</b></div>
+            <div class="pill out"><span data-i18n="spent"></span><b id="spentAmount">$0</b></div>
+          </div>
+          <div class="meter" aria-hidden="true"><i id="meterFill"></i></div>
+          <p class="meter-note" id="meterNote"></p>
+        </section>
+
+        <section class="card" id="entryCard">
+          <div class="seg" role="tablist">
+            <button class="on" data-mode="spend" data-i18n="iSpent"></button>
+            <button data-mode="add" data-i18n="iGot"></button>
+          </div>
+
+          <label class="amount">
+            <span>$</span>
+            <input id="amountInput" type="text" inputmode="decimal" placeholder="0.00" autocomplete="off" aria-label="Amount">
+          </label>
+
+          <div class="label-row">
+            <p class="label" id="catLabel"></p>
+            <button class="link" id="manageCats" data-i18n="manage"></button>
+          </div>
+          <div class="chips" id="chips"></div>
+
+                <input class="text-input" id="placeInput" type="text" maxlength="30" data-i18n-ph="wherePh" autocomplete="off">
+   <div class="place-chips" id="placeChips"></div>
+   <input class="text-input" id="noteInput" type="text" maxlength="60" data-i18n-ph="notePh" autocomplete="off">
+          <button class="go spend" id="goBtn"></button>
+          <p class="err" id="errorText" role="alert"></p>
+        </section>
+      </div>
+
+      <!-- RIGHT column on big screens: charts + history -->
+      <div class="col">
+        <section class="card">
+          <h2 data-i18n="whereWent"></h2>
+          <div id="spendChart"></div>
+        </section>
+
+        <section class="card">
+          <h2 data-i18n="myMonth"></h2>
+          <div id="lineChart"></div>
+        </section>
+
+        <section class="card">
+          <h2 data-i18n="whereCame"></h2>
+          <div id="incomeChart"></div>
+        </section>
+
+        <section class="card">
+          <h2 data-i18n="history"></h2>
+          <div id="historyList"></div>
+        </section>
+
+        <section class="card" id="pastCard" hidden>
+          <h2 data-i18n="pastMonths"></h2>
+          <div id="pastList"></div>
+        </section>
+      </div>
+    </div>
+
+    <p class="foot" data-i18n="privacy"></p>
+  </main>
+
+  <!-- Little message that slides up from the bottom -->
+  <div class="toast" id="toast"><span id="toastText"></span><button id="toastBtn"></button></div>
+
+  <!-- Pop-up panel used for menus and questions -->
+  <div class="sheet-bg" id="sheetBg">
+    <div class="sheet" id="sheet" role="dialog" aria-modal="true"></div>
+  </div>
+
+  <input type="file" id="restoreFile" accept="application/json,.json" hidden>
+
+  <!-- Order matters: each file can use what the files before it defined. -->
+  <script src="js/helpers.js"></script>
+  <script src="js/i18n.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/charts.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

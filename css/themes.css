@@ -1,0 +1,80 @@
+/*
+  themes.css — the three looks.
+
+  Each theme is just a set of CSS variables (--name: value).
+  styles.css only ever uses the variables, so switching theme means
+  changing ONE attribute on <html>: data-theme="blush" | "sage" | "midnight".
+*/
+
+/* 🌸 Blush — pink, lavender, mint (the default) */
+:root,
+[data-theme="blush"] {
+  --bg: linear-gradient(160deg, #fde8f1 0%, #f3e9ff 45%, #e6f6f1 100%);
+  --bg-solid: #f3e9ff;
+  --blob1: #ffc6da; --blob2: #d8ccff; --blob3: #c4f0de;
+  --ink: #3b2f3f;
+  --muted: #8a7b8e;
+  --card: rgba(255, 255, 255, .78);
+  --card-border: rgba(255, 255, 255, .9);
+  --sheet: #ffffff;
+  --line: #efe2ea;
+  --soft: #fbf4f8;
+  --focus: #e8cfe0;
+  --accent: #9b8ce0;  --accent-soft: #efebff; --accent-ink: #5d4fae;
+  --good: #3fa57f;    --good-soft: #e1f5ec;
+  --bad: #e2728f;     --bad-soft: #fde7ee;   --bad-ink: #b04b69;
+  --spend-btn: linear-gradient(135deg, #ef8aa5, #dd6688);
+  --add-btn: linear-gradient(135deg, #5cc29a, #3a9c78);
+  --meter: linear-gradient(90deg, #9fe0c4, #f9b8cb);
+  --line-color: #c77dd8;
+  --chip-on: #3b2f3f; --chip-on-ink: #ffffff;
+  --shadow: 0 10px 30px -12px rgba(150, 100, 140, .25), 0 2px 6px rgba(150, 100, 140, .06);
+}
+
+/* 🌿 Sage — soft green, cream, warm beige */
+[data-theme="sage"] {
+  --bg: linear-gradient(160deg, #f3efe4 0%, #e8efe2 50%, #dfe9e1 100%);
+  --bg-solid: #e8efe2;
+  --blob1: #d7e4c8; --blob2: #efe1c6; --blob3: #c9ddd0;
+  --ink: #2f3a30;
+  --muted: #7a8576;
+  --card: rgba(255, 253, 247, .82);
+  --card-border: rgba(255, 255, 255, .9);
+  --sheet: #fffdf7;
+  --line: #e6e8dc;
+  --soft: #f4f4ec;
+  --focus: #c9d8bf;
+  --accent: #7a9a6b;  --accent-soft: #e8efe0; --accent-ink: #4f6b42;
+  --good: #4f8a5b;    --good-soft: #e3efdf;
+  --bad: #c27a5a;     --bad-soft: #f6e6dc;   --bad-ink: #9a5537;
+  --spend-btn: linear-gradient(135deg, #cf8f6e, #b8714f);
+  --add-btn: linear-gradient(135deg, #7fae80, #5a8d5f);
+  --meter: linear-gradient(90deg, #a9c79a, #e5c49b);
+  --line-color: #6f9a63;
+  --chip-on: #2f3a30; --chip-on-ink: #fffdf7;
+  --shadow: 0 10px 30px -12px rgba(90, 110, 80, .22), 0 2px 6px rgba(90, 110, 80, .06);
+}
+
+/* 🌙 Midnight — dark navy, soft blue and teal */
+[data-theme="midnight"] {
+  --bg: linear-gradient(160deg, #0f1424 0%, #141b31 50%, #10202a 100%);
+  --bg-solid: #121a2c;
+  --blob1: #263a7a; --blob2: #1d4f63; --blob3: #3a2d6b;
+  --ink: #e7ecf7;
+  --muted: #8f9bb5;
+  --card: rgba(26, 33, 56, .78);
+  --card-border: rgba(255, 255, 255, .06);
+  --sheet: #1a2138;
+  --line: #2a3352;
+  --soft: #222b47;
+  --focus: #3c4a78;
+  --accent: #7ea6ff;  --accent-soft: #24305a; --accent-ink: #a9c2ff;
+  --good: #4fd1b0;    --good-soft: #173a3a;
+  --bad: #ff8fa3;     --bad-soft: #3b2236;   --bad-ink: #ffb3c0;
+  --spend-btn: linear-gradient(135deg, #e3728b, #c4566f);
+  --add-btn: linear-gradient(135deg, #3fbf9f, #2a9a80);
+  --meter: linear-gradient(90deg, #4fd1b0, #7ea6ff);
+  --line-color: #7ea6ff;
+  --chip-on: #e7ecf7; --chip-on-ink: #141b31;
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, .6), 0 2px 6px rgba(0, 0, 0, .2);
+}
