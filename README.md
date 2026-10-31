@@ -1,72 +1,115 @@
+<div align="center">
+
 # ✿ Spend Diary
 
-A simple, private money tracker. Log what you spend and what comes in, and see where your money goes.
+**See where your money goes. Privately.**
 
-**No accounts. No servers. No tracking.** Your numbers are saved only on your own device.
+A simple, bilingual money tracker that runs entirely in your browser.<br>
+No accounts. No servers. No tracking. Your numbers never leave your device.
 
-<p align="center">
-  <img src="docs/screenshots/phone-blush.png" width="260" alt="Blush theme">
-  <img src="docs/screenshots/phone-sage.png" width="260" alt="Sage theme">
-  <img src="docs/screenshots/phone-midnight-es.png" width="260" alt="Midnight theme in Spanish">
-</p>
+[**🚀 Try it live**](https://spend-diary-nine.vercel.app) · [How it works](EXPLAINED.md) · [Report a bug](https://github.com/stackmindlab/spend-diary/issues)
 
-![Spend Diary on a laptop](docs/screenshots/desktop.png)
+![HTML](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![PWA](https://img.shields.io/badge/PWA-installable-5A0FC8?logo=pwa&logoColor=white)
+![Vercel](https://img.shields.io/badge/deployed%20on-Vercel-000000?logo=vercel&logoColor=white)
+![No dependencies](https://img.shields.io/badge/dependencies-0-brightgreen)
 
-## Features
-- 💸 Log spending and money coming in with one tap per category
-- 🏷️ Add, rename and delete your own categories (with emoji + color)
-- 📍 **Where?** field that remembers places (Sonic, Whole Foods…) and shows your top places
-- 👆 Tap a category to see it broken down by place
-- 🍩 **Donut chart:** where most of your money goes
-- 📈 **Line chart:** your balance day by day through the month
-- 📊 **Bar charts:** spending and income by category
-- 🗓️ Start a new month and keep past months for comparison
-- 🌸 🌿 🌙 Three themes: Blush, Sage, Midnight
-- 🇺🇸 🇲🇽 English and Spanish
-- 📱 Works on phone, iPad and computer, and can be installed to the home screen
-- 📲 Back up and restore to move your data to another device
-- ✈️ Works offline after the first visit
-- ✨ Smooth animations: charts draw in, sparkle burst when money comes in, entries slide in and out (turned off automatically for people who prefer reduced motion)
+<img src="docs/hero.png" alt="Spend Diary in the Blush, Sage and Midnight themes" width="100%">
 
-## Tech
-Plain **HTML, CSS and JavaScript**, with no frameworks, libraries or build step.
+</div>
 
-| File | Job |
+---
+
+## ✨ Why I built it
+
+I kept ending the month with no money and no idea where it went. Bank apps want your login, and spreadsheets are a chore on a phone.
+So I built the tool I wanted: **log a spend in two taps, and see at a glance where it's going.**
+
+## 🎬 Demo
+
+<div align="center">
+  <img src="docs/demo.gif" alt="Logging a spend, a paycheck sparkle burst, charts animating and switching themes" width="300">
+</div>
+
+## 💸 Features
+
+| | |
 |---|---|
-| `index.html` | Page structure |
-| `css/themes.css` | The 3 color themes (CSS variables) |
-| `css/styles.css` | Layout, components, responsive design |
-| `js/helpers.js` | Small shared tools (formatting money, escaping text) |
-| `js/i18n.js` | English + Spanish text |
-| `js/storage.js` | Saving/loading with localStorage + data validation |
-| `js/charts.js` | Donut, bar and line charts drawn with SVG |
-| `js/app.js` | Rendering the screen and handling every button |
-| `sw.js` | Service worker for offline use |
-| `vercel.json` | Security headers (Content-Security-Policy, etc.) |
+| **Log money in seconds** | Tap a category, type the amount, done. Spending and money in are tracked separately. |
+| **📍 Where did it go?** | Add the place (Sonic, Whole Foods…). The app remembers your places and suggests them next time. |
+| **🍩 See the big picture** | A donut chart of where most of your money goes, bars by category, and your **top places** this month. |
+| **👆 Drill down** | Tap any category to see it broken down by place. |
+| **📈 Your month at a glance** | A line chart of your balance day by day, so you can see *when* the money disappears. |
+| **🏷️ Your own categories** | Add, rename or delete categories with your own emoji and color. Deleting asks where to move old entries, so totals stay correct. |
+| **🗓️ Monthly reset** | Start a new month and keep past months to compare. |
+| **🌸🌿🌙 Three themes** | Blush, Sage and Midnight. |
+| **🇺🇸🇲🇽 English & Español** | Switch anytime. Picks your phone's language automatically. |
+| **📱 Works everywhere** | Phone, iPad and desktop (two-column layout on big screens). Install it to your Home Screen. Works offline. |
+| **📲 Move devices** | Back up to a file and restore it on another device. |
+| **✨ Smooth animations** | Charts draw in, a sparkle burst when money comes in, entries slide in and out. Automatically off for people who prefer reduced motion. |
 
-The full walkthrough of how the code works and why it's built this way is in **[EXPLAINED.md](EXPLAINED.md)**.
+## 🔒 Privacy & security
 
-## Live demo
-Coming soon on Vercel.
+- **Your data stays on your device.** It's stored in the browser's `localStorage`. There's no backend or database, so there's nothing to breach.
+- **XSS-safe rendering.** Everything a user types is escaped before it's displayed.
+- **Validated imports.** Backup files are checked field by field before they're trusted.
+- **Strict security headers** via `vercel.json`: a Content-Security-Policy that blocks outside scripts and outgoing requests, no framing, and no referrer.
 
-## Run it locally
+> **Trade-off:** no sync between devices (yet). Each browser keeps its own data, so back up now and then.
+
+## 🛠️ Tech stack
+
+**Plain HTML, CSS and JavaScript**, with no frameworks, no libraries and no build step.
+
+- Charts are **hand-drawn with SVG** (no chart library)
+- **CSS variables** power the three themes
+- **`Intl` / `toLocaleDateString`** for English and Spanish dates
+- **Service worker + web manifest** make it an installable, offline-ready **PWA**
+- Deployed on **Vercel**, which auto-deploys on every merge to `main`
+
+## 📁 Project structure
+
+```
+spend-diary/
+├── index.html            # Page structure
+├── css/
+│   ├── themes.css        # Blush, Sage, Midnight (CSS variables)
+│   └── styles.css        # Layout, components, animations, responsive
+├── js/
+│   ├── helpers.js        # Shared tools: money format, escapeHTML (XSS)
+│   ├── i18n.js           # English + Spanish text
+│   ├── storage.js        # localStorage save/load + data validation
+│   ├── charts.js         # Donut, bar and line charts (SVG)
+│   └── app.js            # Rendering + every button
+├── sw.js                 # Offline support
+├── manifest.webmanifest  # Home Screen install
+├── vercel.json           # Security headers
+└── EXPLAINED.md          # Full code walkthrough
+```
+
+**Core idea:** every action changes one `state` object → saves it → calls `render()`, which redraws the screen. See **[EXPLAINED.md](EXPLAINED.md)** for the full walkthrough.
+
+## 🚀 Run it locally
+
 ```bash
+git clone https://github.com/stackmindlab/spend-diary.git
+cd spend-diary
 npx serve .
 ```
-Then open the address it prints. You can also just open `index.html` in a browser; everything except offline mode works that way.
 
-## Deploy (Vercel)
-1. Push this repo to GitHub.
-2. On vercel.com: **Add New → Project →** pick the repo.
-3. Framework preset: **Other**. Leave the build command empty. Click **Deploy**.
+Or open the folder in VS Code and use **Live Server**.
 
-## Privacy & security
-- Data lives in the browser's `localStorage` and never leaves the device.
-- Everything people type is escaped before it's shown, to prevent XSS.
-- Backup files are validated before they're loaded.
-- `vercel.json` sets a strict Content-Security-Policy that blocks outside scripts and outgoing network requests.
+## 🗺️ Roadmap
 
-## Roadmap
-- [ ] Accounts with **end-to-end encrypted** sync across devices
-- [ ] Native iOS/Android app (React Native + Expo)
-- [ ] Monthly budget goals per category
+- [ ] "Add to Home Screen" hint for iPhone, and an install button on Android
+- [ ] Backup reminder
+- [ ] Currency picker (Dollar, Peso, Euro…)
+- [ ] Pick a date when logging
+- [ ] Monthly budget per category
+- [ ] Sync across devices with accounts and end-to-end encryption (MERN)
+
+## 🙋‍♀️ About
+
+Built by [stackmindlab](https://github.com/stackmindlab), a full-stack developer focused on privacy-first, AI-assisted development.
