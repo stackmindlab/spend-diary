@@ -91,6 +91,7 @@ function localDate(isoDay) {
 }
 
 // Balance at the end of each day, from the start of the month until today.
+// The first point is your starting amount, so even on day one there's a line to see.
 function dailyBalances() {
   const changeByDay = {};
   for (const e of state.entries) {
@@ -98,7 +99,7 @@ function dailyBalances() {
     changeByDay[k] =
       (changeByDay[k] || 0) + (e.type === "add" ? e.amt : -e.amt);
   }
-  const points = [];
+  const points = [{ label: t("startPoint"), value: round2(state.start) }];
   let balance = state.start;
   const day = localDate(state.monthStart);
   const today = new Date();
