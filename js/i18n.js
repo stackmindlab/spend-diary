@@ -6,7 +6,7 @@
   looks the key up in the current language. Adding a new language later would
   just mean adding one more object here.
 */
- 
+
 const STRINGS = {
   en: {
     appName: "Spend Diary",
@@ -121,12 +121,22 @@ const STRINGS = {
       "See where your money goes. Everything stays private on this device.",
     welcomeQ: "How much money are you starting with?",
     letsGo: "Let's go",
+    // install banner
+    installTitle: "Use it like an app",
+    installIos:
+      "Tap Share ↑ then “Add to Home Screen”. Your data stays safer there.",
+    installAndroid: "Install Spend Diary on your home screen.",
+    installBtn: "Install",
+    installOther:
+      "In your browser's menu, look for “Install app” or “Add to Home Screen”.",
+    installMenu: "Add to Home Screen",
+    installMenuSub: "Use Spend Diary like an app",
     // themes
     blush: "Blush",
     sage: "Sage",
     midnight: "Midnight",
   },
- 
+
   es: {
     appName: "Spend Diary",
     moneyLeft: "Te queda",
@@ -235,12 +245,21 @@ const STRINGS = {
       "Mira a dónde se va tu dinero. Todo se queda privado en este dispositivo.",
     welcomeQ: "¿Con cuánto dinero empiezas?",
     letsGo: "¡Vamos!",
+    installTitle: "Úsala como app",
+    installIos:
+      "Toca Compartir ↑ y luego “Agregar a inicio”. Tus datos están más seguros ahí.",
+    installAndroid: "Instala Spend Diary en tu pantalla de inicio.",
+    installBtn: "Instalar",
+    installOther:
+      "En el menú de tu navegador, busca “Instalar app” o “Agregar a inicio”.",
+    installMenu: "Agregar a inicio",
+    installMenuSub: "Usa Spend Diary como app",
     blush: "Rosa",
     sage: "Salvia",
     midnight: "Medianoche",
   },
 };
- 
+
 // Names for the starter categories. Custom categories keep whatever the person typed.
 const DEFAULT_CAT_NAMES = {
   en: {
@@ -278,22 +297,22 @@ const DEFAULT_CAT_NAMES = {
     otherin: "Otro ingreso",
   },
 };
- 
+
 let currentLang = "en";
- 
+
 // t("overBy", { amt: "$5.00" }) → "You're $5.00 over..."
 function t(key, vars = {}) {
   const text = STRINGS[currentLang][key] ?? STRINGS.en[key] ?? key;
   return text.replace(/\{(\w+)\}/g, (match, name) => vars[name] ?? match);
 }
- 
+
 // Pick a starting language from the phone/browser setting.
 function detectLanguage() {
   return (navigator.language || "en").toLowerCase().startsWith("es")
     ? "es"
     : "en";
 }
- 
+
 // Fill in every element that has data-i18n="key" in the HTML.
 function applyLanguage(lang) {
   currentLang = STRINGS[lang] ? lang : "en";
@@ -305,4 +324,3 @@ function applyLanguage(lang) {
     el.placeholder = t(el.dataset.i18nPh);
   });
 }
- 

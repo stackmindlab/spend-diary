@@ -143,7 +143,7 @@ function render() {
   const pctLeft =
     pool > 0 ? Math.max(0, Math.min(100, (sum.left / pool) * 100)) : 0;
   $("meterFill").style.width = pctLeft.toFixed(1) + "%";
-    $("meterNote").textContent =
+  $("meterNote").textContent =
     pool <= 0
       ? ""
       : sum.left < 0
@@ -811,6 +811,7 @@ function openMenu() {
     <h4>&nbsp;</h4>
     <button class="menu-item" data-action="cats">🏷️ <span>${t("categories")}<small>${t("categoriesSub")}</small></span></button>
     <button class="menu-item" data-action="month">🌙 <span>${t("newMonth")}<small>${t("newMonthSub", { amt: formatMoney(sum.left) })}</small></span></button>
+    ${isInstalled() ? "" : `<button class="menu-item" data-action="install">🏠 <span>${t("installMenu")}<small>${t("installMenuSub")}</small></span></button>`}
     <button class="menu-item" data-action="move">📲 <span>${t("move")}<small>${t("moveSub")}</small></span></button>
     <button class="menu-item danger" data-action="erase">🗑️ <span>${t("eraseAll")}<small>${t("eraseSub")}</small></span></button>`,
     {
@@ -825,6 +826,7 @@ function openMenu() {
       cats: openCategoryManager,
       month: confirmNewMonth,
       move: openMoveSheet,
+      install: openInstallHelp,
       erase: confirmErase,
     },
   );
@@ -1009,13 +1011,96 @@ function showWelcome() {
         save();
         render();
         closeSheet();
+        if (isIOS()) setTimeout(() => showInstallBanner("ios"), 1500);
       },
     },
     true,
   );
 }
 
-/* ============ 13. START UP ============ */
+/* ============ 13. "ADD TO HOME SCREEN" BANNER ============ */
+
+/*
+  iPhone/iPad: Apple doesn't let websites install themselves, so we show the steps.
+  Android/desktop Chrome: the browser fires "beforeinstallprompt", and we can show a real Install button.
+  We never show it if the app is already installed, or if the person closed the banner before.
+*/
+const INSTALL_KEY = "spend-diary-install-dismissed"; // a tiny UI preference, kept apart from your money data
+let installEvent = null; // Chrome's saved install prompt
+
+function isInstalled() {
+  return (
+    matchMedia("(display-mode: standalone)").matches ||
+    navigator.standalone === true
+  );
+}
+function isIOS() {
+  // iPads report themselves as Macs, but Macs don't have touch screens.
+  return (
+    /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)
+  );
+}
+function wasDismissed() {
+  try {
+    return localStorage.getItem(INSTALL_KEY) === "yes";
+  } catch (err) {
+    return false;
+  }
+}
+
+function showInstallBanner(kind) {
+  if (isInstalled() || wasDismissed() || !state.setupDone) return;
+  $("installTitle").textContent = t("installTitle");
+  $("installBody").textContent =
+    kind === "ios" ? t("installIos") : t("installAndroid");
+  $("installBtn").textContent = t("installBtn");
+  $("installBtn").hidden = kind === "ios"; // iPhone gets steps, not a button
+  $("installBanner").hidden = false;
+}
+function hideInstallBanner() {
+  $("installBanner").hidden = true;
+}
+
+$("installClose").addEventListener("click", () => {
+  hideInstallBanner();
+  try {
+    localStorage.setItem(INSTALL_KEY, "yes");
+  } catch (err) {} // don't show it again
+});
+
+// Chrome: save the install prompt so our button can open it later.
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  installEvent = event;
+  showInstallBanner("android");
+});
+$("installBtn").addEventListener("click", async () => {
+  if (!installEvent) return;
+  installEvent.prompt();
+  await installEvent.userChoice;
+  installEvent = null;
+  hideInstallBanner();
+});
+window.addEventListener("appinstalled", hideInstallBanner);
+
+// Menu → "Add to Home Screen": always available, even after closing the banner.
+function openInstallHelp() {
+  if (installEvent) {
+    // Chrome/Android: open the real install prompt
+    closeSheet();
+    $("installBtn").click();
+    return;
+  }
+  const steps = isIOS() ? t("installIos") : t("installOther");
+  openSheet(`<h3>📲 ${t("installTitle")}</h3><p>${steps}</p>
+    <div class="btns one"><button data-action="close">OK</button></div>`);
+}
+
+// iPhone: show the tip a moment after the page loads.
+if (isIOS()) setTimeout(() => showInstallBanner("ios"), 1500);
+
+/* ============ 14. START UP ============ */
 
 applyLanguage(state.settings.lang);
 document.documentElement.dataset.theme = state.settings.theme;

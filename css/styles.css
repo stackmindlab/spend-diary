@@ -1007,6 +1007,68 @@ h2 {
   }
 }
 
+/* "Add to Home Screen" banner */
+.install-banner {
+  position: fixed;
+  left: 50%;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 15;
+  width: calc(100% - 24px);
+  max-width: 520px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--sheet);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  padding: 12px 10px 12px 14px;
+  animation: bannerUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+/* Our display:flex above would override the HTML "hidden" attribute, so say it explicitly */
+.install-banner[hidden],
+.install-btn[hidden] {
+  display: none;
+}
+@keyframes bannerUp {
+  from {
+    transform: translate(-50%, 140%);
+  }
+  to {
+    transform: translate(-50%, 0);
+  }
+}
+.install-icon {
+  font-size: 26px;
+}
+.install-text {
+  flex: 1;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.35;
+}
+.install-text b {
+  display: block;
+  color: var(--ink);
+  font-size: 14px;
+}
+.install-btn {
+  border: none;
+  background: var(--chip-on);
+  color: var(--chip-on-ink);
+  font-weight: 800;
+  padding: 9px 14px;
+  border-radius: 12px;
+}
+.install-close {
+  border: none;
+  background: none;
+  color: var(--muted);
+  font-size: 22px;
+  padding: 4px 8px;
+}
+
 /* Sparkle burst when money comes in */
 .spark {
   position: fixed;

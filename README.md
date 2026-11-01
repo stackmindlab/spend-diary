@@ -35,20 +35,20 @@ So I built the tool I wanted: **log a spend in two taps, and see at a glance whe
 
 ## 💸 Features
 
-| | |
-|---|---|
-| **Log money in seconds** | Tap a category, type the amount, done. Spending and money in are tracked separately. |
-| **📍 Where did it go?** | Add the place (Sonic, Whole Foods…). The app remembers your places and suggests them next time. |
-| **🍩 See the big picture** | A donut chart of where most of your money goes, bars by category, and your **top places** this month. |
-| **👆 Drill down** | Tap any category to see it broken down by place. |
-| **📈 Your month at a glance** | A line chart of your balance day by day, so you can see *when* the money disappears. |
-| **🏷️ Your own categories** | Add, rename or delete categories with your own emoji and color. Deleting asks where to move old entries, so totals stay correct. |
-| **🗓️ Monthly reset** | Start a new month and keep past months to compare. |
-| **🌸🌿🌙 Three themes** | Blush, Sage and Midnight. |
-| **🇺🇸🇲🇽 English & Español** | Switch anytime. Picks your phone's language automatically. |
-| **📱 Works everywhere** | Phone, iPad and desktop (two-column layout on big screens). Install it to your Home Screen. Works offline. |
-| **📲 Move devices** | Back up to a file and restore it on another device. |
-| **✨ Smooth animations** | Charts draw in, a sparkle burst when money comes in, entries slide in and out. Automatically off for people who prefer reduced motion. |
+|                               |                                                                                                                                        |
+| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| **Log money in seconds**      | Tap a category, type the amount, done. Spending and money in are tracked separately.                                                   |
+| **📍 Where did it go?**       | Add the place (Sonic, Whole Foods…). The app remembers your places and suggests them next time.                                        |
+| **🍩 See the big picture**    | A donut chart of where most of your money goes, bars by category, and your **top places** this month.                                  |
+| **👆 Drill down**             | Tap any category to see it broken down by place.                                                                                       |
+| **📈 Your month at a glance** | A line chart of your balance day by day, so you can see _when_ the money disappears.                                                   |
+| **🏷️ Your own categories**    | Add, rename or delete categories with your own emoji and color. Deleting asks where to move old entries, so totals stay correct.       |
+| **🗓️ Monthly reset**          | Start a new month and keep past months to compare.                                                                                     |
+| **🌸🌿🌙 Three themes**       | Blush, Sage and Midnight.                                                                                                              |
+| **🇺🇸🇲🇽 English & Español**    | Switch anytime. Picks your phone's language automatically.                                                                             |
+| **📱 Works everywhere**       | Phone, iPad and desktop (two-column layout on big screens). Install it to your Home Screen. Works offline.                             |
+| **📲 Move devices**           | Back up to a file and restore it on another device.                                                                                    |
+| **✨ Smooth animations**      | Charts draw in, a sparkle burst when money comes in, entries slide in and out. Automatically off for people who prefer reduced motion. |
 
 ## 🔒 Privacy & security
 
