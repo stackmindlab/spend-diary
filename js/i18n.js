@@ -41,8 +41,7 @@ const STRINGS = {
     startPoint: "Start",
     history: "History",
     pastMonths: "Past months",
-    nothingSpent:
-      "Nothing spent yet. Each time you spend, log it and it'll show up here.",
+    nothingSpent: "Nothing spent yet. Each time you spend, log it and it'll show up here.",
     nothingAdded: "No money added yet this month.",
     noEntries: "No entries yet. Your first one goes up top ↑",
     lineEmpty: "Your balance line shows up once you log something.",
@@ -53,15 +52,12 @@ const STRINGS = {
     undo: "Undo",
     spentMost: "Spent {amt} · most on {cat}",
     left: "left",
-    privacy:
-      "🔒 Private: your numbers are saved only on this device. Nothing is sent anywhere.",
+    privacy: "🔒 Private: your numbers are saved only on this device. Nothing is sent anywhere.",
     // menu
     menu: "Menu",
-    menuNote:
-      "Your data only lives on this device, so back it up now and then.",
+    menuNote: "Your data only lives on this device, so back it up now and then.",
     newMonth: "Start a new month",
-    newMonthSub:
-      'Saves this month to "Past months" and starts fresh with {amt}',
+    newMonthSub: "Saves this month to \"Past months\" and starts fresh with {amt}",
     categories: "My categories",
     categoriesSub: "Add, rename or delete",
     theme: "Theme",
@@ -76,24 +72,20 @@ const STRINGS = {
     startTitle: "Starting amount",
     startQ: "How much did you have at the start?",
     newMonthQ: "Start a new month?",
-    newMonthBody:
-      "This month gets saved to \"Past months\". You'll start fresh with what's left: {amt}.",
+    newMonthBody: "This month gets saved to \"Past months\". You'll start fresh with what's left: {amt}.",
     startFresh: "Start fresh",
     freshToast: "Fresh start ✿",
     eraseQ: "Erase everything?",
-    eraseBody:
-      "This deletes all entries, categories and past months on this device. Back up first if you might want them.",
+    eraseBody: "This deletes all entries, categories and past months on this device. Back up first if you might want them.",
     erase: "Erase",
     erased: "All cleared",
     moveTitle: "Move to another device",
-    moveBody:
-      "1. Tap Back up to download a small file.\n2. Send it to your other device (email, AirDrop, Drive).\n3. Open Spend Diary there → Menu → Move to another device → Restore.",
+    moveBody: "1. Tap Back up to download a small file.\n2. Send it to your other device (email, AirDrop, Drive).\n3. Open Spend Diary there → Menu → Move to another device → Restore.",
     backup: "Back up",
     restore: "Restore",
     backupDone: "Backup downloaded ✓",
     restoreQ: "Restore this backup?",
-    restoreBody:
-      "It has {n} entries. It will replace what's on this device now.",
+    restoreBody: "It has {n} entries. It will replace what's on this device now.",
     restored: "Backup restored ✓",
     badFile: "That doesn't look like a Spend Diary backup.",
     saveFail: "Couldn't save. Is private browsing on?",
@@ -113,18 +105,23 @@ const STRINGS = {
     catDeleted: "Category deleted",
     errName: "Give it a name.",
     errDup: "You already have one with that name.",
-    moveQ: '"{cat}" has {n} entries ({amt}). Move them to:',
+    moveQ: "\"{cat}\" has {n} entries ({amt}). Move them to:",
     lastCat: "Keep at least one category here.",
     // welcome
     welcome: "Welcome to Spend Diary ✿",
-    welcomeBody:
-      "See where your money goes. Everything stays private on this device.",
+    welcomeBody: "See where your money goes. Everything stays private on this device.",
     welcomeQ: "How much money are you starting with?",
     letsGo: "Let's go",
+    // install banner
+    installTitle: "Use it like an app",
+    installIos: "Tap Share ↑ then “Add to Home Screen”. Your data stays safer there.",
+    installAndroid: "Install Spend Diary on your home screen.",
+    installBtn: "Install",
+    installOther: "In your browser's menu, look for “Install app” or “Add to Home Screen”.",
+    installMenu: "Add to Home Screen",
+    installMenuSub: "Use Spend Diary like an app",
     // themes
-    blush: "Blush",
-    sage: "Sage",
-    midnight: "Midnight",
+    blush: "Blush", sage: "Sage", midnight: "Midnight"
   },
  
   es: {
@@ -160,8 +157,7 @@ const STRINGS = {
     startPoint: "Inicio",
     history: "Historial",
     pastMonths: "Meses anteriores",
-    nothingSpent:
-      "Todavía no has gastado nada. Cada vez que gastes, anótalo y aparecerá aquí.",
+    nothingSpent: "Todavía no has gastado nada. Cada vez que gastes, anótalo y aparecerá aquí.",
     nothingAdded: "Todavía no ha entrado dinero este mes.",
     noEntries: "Nada anotado todavía. Lo primero va arriba ↑",
     lineEmpty: "La línea de tu saldo aparece cuando anotes algo.",
@@ -172,13 +168,11 @@ const STRINGS = {
     undo: "Deshacer",
     spentMost: "Gastaste {amt} · más en {cat}",
     left: "quedó",
-    privacy:
-      "🔒 Privado: tus números se guardan solo en este dispositivo. No se envía nada.",
+    privacy: "🔒 Privado: tus números se guardan solo en este dispositivo. No se envía nada.",
     menu: "Menú",
-    menuNote:
-      "Tus datos solo viven en este dispositivo. Haz un respaldo de vez en cuando.",
+    menuNote: "Tus datos solo viven en este dispositivo. Haz un respaldo de vez en cuando.",
     newMonth: "Empezar un mes nuevo",
-    newMonthSub: 'Guarda este mes en "Meses anteriores" y empiezas con {amt}',
+    newMonthSub: "Guarda este mes en \"Meses anteriores\" y empiezas con {amt}",
     categories: "Mis categorías",
     categoriesSub: "Agregar, cambiar nombre o borrar",
     theme: "Tema",
@@ -192,24 +186,20 @@ const STRINGS = {
     startTitle: "Cantidad inicial",
     startQ: "¿Con cuánto empezaste?",
     newMonthQ: "¿Empezar un mes nuevo?",
-    newMonthBody:
-      'Este mes se guarda en "Meses anteriores". Empiezas con lo que te quedó: {amt}.',
+    newMonthBody: "Este mes se guarda en \"Meses anteriores\". Empiezas con lo que te quedó: {amt}.",
     startFresh: "Empezar",
     freshToast: "Mes nuevo ✿",
     eraseQ: "¿Borrar todo?",
-    eraseBody:
-      "Esto borra todo lo anotado, tus categorías y meses anteriores en este dispositivo. Haz un respaldo primero si los quieres.",
+    eraseBody: "Esto borra todo lo anotado, tus categorías y meses anteriores en este dispositivo. Haz un respaldo primero si los quieres.",
     erase: "Borrar",
     erased: "Todo borrado",
     moveTitle: "Pasar a otro dispositivo",
-    moveBody:
-      "1. Toca Respaldar para descargar un archivo pequeño.\n2. Mándalo a tu otro dispositivo (correo, AirDrop, Drive).\n3. Abre Spend Diary allá → Menú → Pasar a otro dispositivo → Restaurar.",
+    moveBody: "1. Toca Respaldar para descargar un archivo pequeño.\n2. Mándalo a tu otro dispositivo (correo, AirDrop, Drive).\n3. Abre Spend Diary allá → Menú → Pasar a otro dispositivo → Restaurar.",
     backup: "Respaldar",
     restore: "Restaurar",
     backupDone: "Respaldo descargado ✓",
     restoreQ: "¿Restaurar este respaldo?",
-    restoreBody:
-      "Tiene {n} movimientos. Va a reemplazar lo que tienes ahora en este dispositivo.",
+    restoreBody: "Tiene {n} movimientos. Va a reemplazar lo que tienes ahora en este dispositivo.",
     restored: "Respaldo restaurado ✓",
     badFile: "Ese archivo no parece un respaldo de Spend Diary.",
     saveFail: "No se pudo guardar. ¿Estás en modo privado?",
@@ -228,55 +218,31 @@ const STRINGS = {
     catDeleted: "Categoría borrada",
     errName: "Ponle un nombre.",
     errDup: "Ya tienes una con ese nombre.",
-    moveQ: '"{cat}" tiene {n} movimientos ({amt}). ¿A dónde los pasamos?',
+    moveQ: "\"{cat}\" tiene {n} movimientos ({amt}). ¿A dónde los pasamos?",
     lastCat: "Deja por lo menos una categoría aquí.",
     welcome: "Te damos la bienvenida a Spend Diary ✿",
-    welcomeBody:
-      "Mira a dónde se va tu dinero. Todo se queda privado en este dispositivo.",
+    welcomeBody: "Mira a dónde se va tu dinero. Todo se queda privado en este dispositivo.",
     welcomeQ: "¿Con cuánto dinero empiezas?",
     letsGo: "¡Vamos!",
-    blush: "Rosa",
-    sage: "Salvia",
-    midnight: "Medianoche",
-  },
+    installTitle: "Úsala como app",
+    installIos: "Toca Compartir ↑ y luego “Agregar a inicio”. Tus datos están más seguros ahí.",
+    installAndroid: "Instala Spend Diary en tu pantalla de inicio.",
+    installBtn: "Instalar",
+    installOther: "En el menú de tu navegador, busca “Instalar app” o “Agregar a inicio”.",
+    installMenu: "Agregar a inicio",
+    installMenuSub: "Usa Spend Diary como app",
+    blush: "Rosa", sage: "Salvia", midnight: "Medianoche"
+  }
 };
  
 // Names for the starter categories. Custom categories keep whatever the person typed.
 const DEFAULT_CAT_NAMES = {
-  en: {
-    food: "Food & groceries",
-    eatout: "Eating out",
-    gas: "Gas",
-    bills: "Bills",
-    rent: "Rent",
-    kids: "Kids",
-    shopping: "Shopping",
-    fun: "Fun",
-    subs: "Subscriptions",
-    other: "Other",
-    pay: "Paycheck",
-    side: "Side gig",
-    gift: "Gift",
-    refund: "Refund",
-    otherin: "Other income",
-  },
-  es: {
-    food: "Comida y súper",
-    eatout: "Comer fuera",
-    gas: "Gasolina",
-    bills: "Facturas",
-    rent: "Renta",
-    kids: "Niños",
-    shopping: "Compras",
-    fun: "Diversión",
-    subs: "Suscripciones",
-    other: "Otro",
-    pay: "Cheque",
-    side: "Trabajo extra",
-    gift: "Regalo",
-    refund: "Reembolso",
-    otherin: "Otro ingreso",
-  },
+  en: { food:"Food & groceries", eatout:"Eating out", gas:"Gas", bills:"Bills", rent:"Rent", kids:"Kids",
+        shopping:"Shopping", fun:"Fun", subs:"Subscriptions", other:"Other",
+        pay:"Paycheck", side:"Side gig", gift:"Gift", refund:"Refund", otherin:"Other income" },
+  es: { food:"Comida y súper", eatout:"Comer fuera", gas:"Gasolina", bills:"Facturas", rent:"Renta", kids:"Niños",
+        shopping:"Compras", fun:"Diversión", subs:"Suscripciones", other:"Otro",
+        pay:"Cheque", side:"Trabajo extra", gift:"Regalo", refund:"Reembolso", otherin:"Otro ingreso" }
 };
  
 let currentLang = "en";
@@ -289,20 +255,13 @@ function t(key, vars = {}) {
  
 // Pick a starting language from the phone/browser setting.
 function detectLanguage() {
-  return (navigator.language || "en").toLowerCase().startsWith("es")
-    ? "es"
-    : "en";
+  return (navigator.language || "en").toLowerCase().startsWith("es") ? "es" : "en";
 }
  
 // Fill in every element that has data-i18n="key" in the HTML.
 function applyLanguage(lang) {
   currentLang = STRINGS[lang] ? lang : "en";
   document.documentElement.lang = currentLang;
-  document.querySelectorAll("[data-i18n]").forEach((el) => {
-    el.textContent = t(el.dataset.i18n);
-  });
-  document.querySelectorAll("[data-i18n-ph]").forEach((el) => {
-    el.placeholder = t(el.dataset.i18nPh);
-  });
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
 }
- 

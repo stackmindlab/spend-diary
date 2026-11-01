@@ -103,6 +103,14 @@
     <p class="foot" data-i18n="privacy"></p>
   </main>
 
+    <!-- "Add to Home Screen" tip (filled in by app.js, hidden unless it applies) -->
+  <div class="install-banner" id="installBanner" hidden>
+    <span class="install-icon">📲</span>
+    <div class="install-text"><b id="installTitle"></b><span id="installBody"></span></div>
+    <button class="install-btn" id="installBtn" hidden></button>
+    <button class="install-close" id="installClose" aria-label="Close">×</button>
+  </div>
+  
   <!-- Little message that slides up from the bottom -->
   <div class="toast" id="toast"><span id="toastText"></span><button id="toastBtn"></button></div>
 
